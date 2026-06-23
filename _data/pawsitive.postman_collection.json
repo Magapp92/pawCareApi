@@ -1,0 +1,208 @@
+{
+  "info": {
+    "name": "Pawsitive API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:3000" },
+    { "key": "perfilId", "value": "PEGA_AQUI_EL_ID_DEL_PERFIL" },
+    { "key": "cuidadorId", "value": "PEGA_AQUI_EL_ID_DEL_CUIDADOR" },
+    { "key": "mascotaId", "value": "PEGA_AQUI_EL_ID_DE_LA_MASCOTA" },
+    { "key": "reservaId", "value": "PEGA_AQUI_EL_ID_DE_LA_RESERVA" }
+  ],
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Login usuario (edu)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/pawcare/login",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"edu@pawsitive.com\",\n  \"password\": \"edu1234\",\n  \"rol\": \"usuario\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Login cuidador (ana)",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/pawcare/login",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"ana@pawsitive.com\",\n  \"password\": \"ana1234\",\n  \"rol\": \"cuidador\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Perfiles",
+      "item": [
+        {
+          "name": "Obtener perfil por id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pawcare/perfiles/{{perfilId}}"
+          }
+        },
+        {
+          "name": "Actualizar datos personales (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/pawcare/perfiles/{{perfilId}}",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"telefono\": \"+34 699 999 999\",\n  \"direccion\": \"Calle Nueva 5, Madrid\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Anadir mascota",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/pawcare/perfiles/{{perfilId}}/mascotas",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Simba\",\n  \"especie\": \"gato\",\n  \"raza\": \"Persa\",\n  \"edadMeses\": 8,\n  \"vacunada\": true,\n  \"fotoUrl\": \"https://placekitten.com/400/301\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Actualizar mascota (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/pawcare/perfiles/{{perfilId}}/mascotas/{{mascotaId}}",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"edadMeses\": 26,\n  \"vacunada\": true\n}"
+            }
+          }
+        },
+        {
+          "name": "Eliminar mascota",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/pawcare/perfiles/{{perfilId}}/mascotas/{{mascotaId}}"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Cuidadores",
+      "item": [
+        {
+          "name": "Obtener todos los cuidadores",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pawcare/cuidadores"
+          }
+        },
+        {
+          "name": "Obtener cuidador por id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pawcare/cuidadores/{{cuidadorId}}"
+          }
+        },
+        {
+          "name": "Actualizar cuidador (PUT)",
+          "request": {
+            "method": "PUT",
+            "url": "{{baseUrl}}/pawcare/cuidadores/{{cuidadorId}}",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Maria Lopez Garcia\",\n  \"edad\": 29,\n  \"avatarUrl\": \"https://i.pravatar.cc/150?img=5\",\n  \"ubicacion\": \"Madrid\",\n  \"experienciaAnos\": 5,\n  \"animalesQueAtiende\": [\"perro\", \"gato\", \"conejo\"],\n  \"servicios\": {\n    \"cuidadoDiario\": true,\n    \"largaEstancia\": true,\n    \"paseador\": true,\n    \"peluqueria\": false\n  },\n  \"valoracion\": 4.9,\n  \"preciosPorServicio\": {\n    \"cuidadoDiario\": 27,\n    \"largaEstancia\": 37,\n    \"paseador\": 15,\n    \"peluqueria\": 0\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "Filtrar por servicio",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pawcare/cuidadores/servicios/paseador"
+          }
+        },
+        {
+          "name": "Filtrar por animal",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pawcare/cuidadores/animalesQueAtiende/gato"
+          }
+        },
+        {
+          "name": "Filtrar por ubicacion",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pawcare/cuidadores/ubicacion/Madrid"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Reservas",
+      "item": [
+        {
+          "name": "Crear reserva",
+          "request": {
+            "method": "POST",
+            "url": "{{baseUrl}}/pawcare/reservas",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"fechaInicio\": \"2026-09-01\",\n  \"fechaFin\": \"2026-09-05\",\n  \"tipoServicio\": \"largaEstancia\",\n  \"estado\": \"Pendiente\",\n  \"coste\": 135,\n  \"cuidador\": {\n    \"cuidadorId\": \"{{cuidadorId}}\",\n    \"nombre\": \"Maria Lopez\",\n    \"avatarUrl\": \"https://i.pravatar.cc/150?img=5\"\n  },\n  \"mascota\": {\n    \"mascotaId\": \"{{mascotaId}}\",\n    \"nombre\": \"Luna\",\n    \"especie\": \"perro\",\n    \"fotoUrl\": \"https://placedog.net/400/300?id=1\"\n  },\n  \"usuario\": {\n    \"perfilId\": \"{{perfilId}}\",\n    \"nombre\": \"Ana Garcia\"\n  }\n}"
+            }
+          }
+        },
+        {
+          "name": "Obtener reservas de un usuario",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pawcare/reservas/usuario/{{perfilId}}"
+          }
+        },
+        {
+          "name": "Obtener reservas de un cuidador",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pawcare/reservas/cuidador/{{cuidadorId}}"
+          }
+        },
+        {
+          "name": "Obtener reserva por id",
+          "request": {
+            "method": "GET",
+            "url": "{{baseUrl}}/pawcare/reservas/{{reservaId}}"
+          }
+        },
+        {
+          "name": "Actualizar estado (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "url": "{{baseUrl}}/pawcare/reservas/{{reservaId}}",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"Confirmada\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Cancelar reserva",
+          "request": {
+            "method": "DELETE",
+            "url": "{{baseUrl}}/pawcare/reservas/{{reservaId}}"
+          }
+        }
+      ]
+    }
+  ]
+}

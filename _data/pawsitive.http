@@ -1,0 +1,161 @@
+### ==================== VARIABLES ====================
+@baseUrl = http://localhost:3000
+
+@perfilId = 6a39ba4c5b40aa65904a40e
+@perfilId = 6a39ba4c5b40aa65904a40ec
+@cuidadorId = 6a39ba345b40aa65904a40d1
+@mascotaId = 6a39bc125b40aa65904a4100
+@reservaId = 6a39beff3a3ad6e3aba380b1
+
+### ==================== AUTH ====================
+
+### Login usuario (edu)
+POST {{baseUrl}}/pawcare/login
+Content-Type: application/json
+
+{
+  "email": "edu@pawsitive.com",
+  "password": "edu1234",
+  "rol": "usuario"
+}
+
+### Login cuidador (ana)
+POST {{baseUrl}}/pawcare/login
+Content-Type: application/json
+
+{
+  "email": "ana@pawsitive.com",
+  "password": "ana1234",
+  "rol": "cuidador"
+}
+
+### ==================== PERFILES ====================
+
+### Obtener perfil por id
+GET {{baseUrl}}/pawcare/perfiles/{{perfilId}}
+
+### Actualizar datos personales (PATCH)
+PATCH {{baseUrl}}/pawcare/perfiles/{{perfilId}}
+Content-Type: application/json
+
+{
+  "telefono": "+34 699 999 999",
+  "direccion": "Calle Nueva 5, Madrid"
+}
+
+### Añadir mascota
+POST {{baseUrl}}/pawcare/perfiles/{{perfilId}}/mascotas
+Content-Type: application/json
+
+{
+  "nombre": "Simba",
+  "especie": "gato",
+  "raza": "Persa",
+  "edadMeses": 8,
+  "vacunada": true,
+  "fotoUrl": "https://placekitten.com/400/301"
+}
+
+### Actualizar mascota (PATCH)
+PATCH {{baseUrl}}/pawcare/perfiles/{{perfilId}}/mascotas/{{mascotaId}}
+Content-Type: application/json
+
+{
+  "edadMeses": 26,
+  "vacunada": true
+}
+
+### Eliminar mascota
+DELETE {{baseUrl}}/pawcare/perfiles/{{perfilId}}/mascotas/{{mascotaId}}
+
+### ==================== CUIDADORES ====================
+
+### Obtener todos los cuidadores
+GET {{baseUrl}}/pawcare/cuidadores
+
+### Obtener cuidador por id
+GET {{baseUrl}}/pawcare/cuidadores/{{cuidadorId}}
+
+### Actualizar cuidador (PUT)
+PUT {{baseUrl}}/pawcare/cuidadores/{{cuidadorId}}
+Content-Type: application/json
+
+{
+  "nombre": "María López García",
+  "edad": 29,
+  "avatarUrl": "https://i.pravatar.cc/150?img=5",
+  "ubicacion": "Madrid",
+  "experienciaAnos": 5,
+  "animalesQueAtiende": ["perro", "gato", "conejo"],
+  "servicios": {
+    "cuidadoDiario": true,
+    "largaEstancia": true,
+    "paseador": true,
+    "peluqueria": false
+  },
+  "valoracion": 4.9,
+  "preciosPorServicio": {
+    "cuidadoDiario": 27,
+    "largaEstancia": 37,
+    "paseador": 15,
+    "peluqueria": 0
+  }
+}
+
+### Filtrar por servicio
+GET {{baseUrl}}/pawcare/cuidadores/servicios/paseador
+
+### Filtrar por animal
+GET {{baseUrl}}/pawcare/cuidadores/animalesQueAtiende/gato
+
+### Filtrar por ubicacion
+GET {{baseUrl}}/pawcare/cuidadores/ubicacion/Madrid
+
+### ==================== RESERVAS ====================
+
+### Crear reserva
+POST {{baseUrl}}/pawcare/reservas
+Content-Type: application/json
+
+{
+  "fechaInicio": "2026-09-01",
+  "fechaFin": "2026-09-05",
+  "tipoServicio": "largaEstancia",
+  "estado": "Pendiente",
+  "coste": 135,
+  "cuidador": {
+    "cuidadorId": "{{cuidadorId}}",
+    "nombre": "María López",
+    "avatarUrl": "https://i.pravatar.cc/150?img=5"
+  },
+  "mascota": {
+    "mascotaId": "{{mascotaId}}",
+    "nombre": "Luna",
+    "especie": "perro",
+    "fotoUrl": "https://placedog.net/400/300?id=1"
+  },
+  "usuario": {
+    "perfilId": "{{perfilId}}",
+    "nombre": "Ana García"
+  }
+}
+
+### Obtener reservas de un usuario
+GET {{baseUrl}}/pawcare/reservas/usuario/{{perfilId}}
+
+### Obtener reservas de un cuidador
+GET {{baseUrl}}/pawcare/reservas/cuidador/{{cuidadorId}}
+
+### Obtener reserva por id
+GET {{baseUrl}}/pawcare/reservas/{{reservaId}}
+
+### Actualizar estado de reserva (PATCH)
+PATCH {{baseUrl}}/pawcare/reservas/{{reservaId}}
+Content-Type: application/json
+
+{
+  "estado": "Confirmada"
+}
+
+### Cancelar reserva
+DELETE {{baseUrl}}/pawcare/reservas/{{reservaId}}

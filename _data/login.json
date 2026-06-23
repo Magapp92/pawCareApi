@@ -1,0 +1,16 @@
+[{
+  "_id": {
+    "$oid": "6a39ba3f5b40aa65904a40e6"
+  },
+  "email": "ana@pawsitive.com",
+  "password": "ana1234",
+  "rol": "cuidador"
+},
+{
+  "_id": {
+    "$oid": "6a39ba3f5b40aa65904a40e7"
+  },
+  "email": "edu@pawsitive.com",
+  "password": "edu1234",
+  "rol": "usuario"
+}]

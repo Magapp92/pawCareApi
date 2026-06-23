@@ -1,0 +1,48 @@
+[{
+  "_id": {
+    "$oid": "6a39ba4c5b40aa65904a40eb"
+  },
+  "nombre": "Ana García",
+  "telefono": "+34 612 345 678",
+  "direccion": "Calle Mayor 12, Madrid",
+  "avatarUrl": "https://i.pravatar.cc/150?img=47",
+  "miembroDesde": "2024-01-15",
+  "reservas": [],
+  "rol": "cuidador"
+},
+{
+  "_id": {
+    "$oid": "6a39ba4c5b40aa65904a40ec"
+  },
+  "nombre": "Eduardo Fierro",
+  "telefono": "+34 698 765 432",
+  "direccion": "Avenida del Sol 8, Barcelona",
+  "avatarUrl": "https://i.pravatar.cc/150?img=12",
+  "miembroDesde": "2024-02-20",
+  "mascotas": [
+    {
+      "nombre": "Max",
+      "especie": "perro",
+      "raza": "Bulldog Francés",
+      "edadMeses": 36,
+      "vacunada": true,
+      "fotoUrl": "https://placedog.net/400/300?id=2",
+      "_id": {
+        "$oid": "6a39bc125b40aa65904a4100"
+      }
+    },
+    {
+      "nombre": "Nala",
+      "especie": "gato",
+      "raza": "Siamés",
+      "edadMeses": 12,
+      "vacunada": true,
+      "fotoUrl": "https://placekitten.com/400/300",
+      "_id": {
+        "$oid": "6a39bc245b40aa65904a4101"
+      }
+    }
+  ],
+  "reservas": [],
+  "rol": "usuario"
+}]
