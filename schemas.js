@@ -107,6 +107,9 @@ const reservaSchema = new mongoose.Schema (
      tipoServicio: { type: mongoose.Schema.Types.String },
      estado: { type: mongoose.Schema.Types.String },
      coste: { type: mongoose.Schema.Types.Number },
+     comentario: { type: mongoose.Schema.Types.Number },
+     mensaje: { type: mongoose.Schema.Types.String },
+     respuesta: { type: mongoose.Schema.Types.String },
      cuidador: { 
         cuidadorId: { type: mongoose.Schema.Types.ObjectId, ref:'cuidadores' }, 
         nombre: { type: mongoose.Schema.Types.String },
