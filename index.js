@@ -33,3 +33,5 @@ conectar()
 app.listen( PORT , ()=> {
     console.log(`✅Iniciando API en localhost:${PORT}`)
 })
+
+module.exports = app
