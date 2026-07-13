@@ -1,4 +1,5 @@
 
+/* Middleware 404: se ejecuta cuando ninguna ruta del router coincide */
 const notFound = ( req , res , next ) => {
     const error = new Error(`Endpoint no existe`)
             error.status = 404
@@ -6,6 +7,7 @@ const notFound = ( req , res , next ) => {
 }
 
 
+/* Middleware centralizado de errores: recibe los next(error); sin status responde 500 */
 const errorHandler = ( error , req , res , next )=>{
     let { status , message } = error
         status  = status  || 500

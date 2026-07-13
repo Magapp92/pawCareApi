@@ -1,4 +1,5 @@
 
+/* Creamos los modelos de Mongoose que usan los controllers */
 const mongoose = require('mongoose')
 
 const { loginSchema, cuidadorSchema, perfilSchema, reservaSchema } = require('./schemas')

@@ -1,7 +1,7 @@
 
 const { Cuidador } = require('../models')
 
-
+/* Lista completa de cuidadores para la página de inicio */
 const getCuidadores = async (req, res, next) => {
     try {
         const data = await Cuidador.find()
@@ -20,6 +20,13 @@ const getCuidadoresById = async (req, res, next) => {
         const { _id } = req.params
 
         const data = await Cuidador.findById(_id)
+        /* 404 si el id no existe */
+        if (!data) {
+            return res.status(404).json({
+                message: `No existe el cuidador con id ${_id}`,
+                data: null
+            })
+        }
 
         res.status(200).json({
             message: `Mostrando al cuidador con id ${_id}`,
@@ -30,6 +37,7 @@ const getCuidadoresById = async (req, res, next) => {
     }
 }
 
+/* Filtra por servicio activo usando la clave dinámica del subdocumento servicios */
 const getCuidadoresByServicio = async (req, res, next) => {
     try{
         const { servicio } = req.params
@@ -45,11 +53,12 @@ const getCuidadoresByServicio = async (req, res, next) => {
     }
 }
 
+/* $regex acepta coincidencias parciales sin distinguir mayusculas */
 const getCuidadoresByUbicacion = async (req, res, next) => {
     try{
         const { ubicacion } = req.params
 
-        const data = await Cuidador.find({ ubicacion })
+        const data = await Cuidador.find({ ubicacion: { $regex: ubicacion, $options: 'i' } })
 
         res.status(200).json({
             message: `Mostrando cuidadores en ${ubicacion}`,
@@ -75,12 +84,20 @@ const getCuidadoresByAnimal = async (req, res, next) => {
     }
 }
 
+/* Actualiza el perfil completo del cuidador desde su panel */
 const putCuidador = async (req, res, next) => {
     try{
       const { _id } = req.params
       const { body } = req
 
-      await Cuidador.findByIdAndUpdate(_id, body)
+      const actualizado = await Cuidador.findByIdAndUpdate(_id, body)
+      /* 404 si el id no existe */
+      if (!actualizado) {
+          return res.status(404).json({
+              message: `No existe el cuidador con id ${_id}`,
+              data: null
+          })
+      }
 
       const data = await Cuidador.find()
 

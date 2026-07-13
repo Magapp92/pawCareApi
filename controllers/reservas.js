@@ -2,6 +2,7 @@
 const { Reserva, Cuidador, Perfil } = require('../models')
 
 
+/* Reservas de un usuario filtrando por el id, usuario.perfilId */
 const getReservasByPerfil = async (req, res, next) => {
     try {
         const { _id } = req.params 
@@ -21,6 +22,13 @@ const getReservaById = async (req, res, next) => {
         const { _id } = req.params
 
         const data = await Reserva.findById(_id)
+        /* 404 si el id no existe */
+        if (!data) {
+            return res.status(404).json({
+                message: `No existe la reserva con id ${_id}`,
+                data: null
+            })
+        }
 
         res.status(200).json({
             message: `Mostrando la reserva ${_id}`,
@@ -46,20 +54,31 @@ const getReservaByCuidador = async (req, res, next) => {
     }
 }
 
+/* Crea la reserva y además guarda un resumen en el perfil del usuario
+y en el array reservado del cuidador para que ambos la vean */
 const postReserva = async (req, res, next) => {
     try{
         const { body } = req
+
+        /* Validamos que el perfil y el cuidador existan antes de crear nada */
+        const perfil = await Perfil.findById(body.usuario?.perfilId)
+        const cuidador = await Cuidador.findById(body.cuidador?.cuidadorId)
+
+        if (!perfil || !cuidador) {
+            return res.status(404).json({
+                message: `El perfil o el cuidador de la reserva no existen`,
+                data: null
+            })
+        }
 
         const nuevaReserva = new Reserva(body)
 
         await nuevaReserva.save()
 
-        const perfil = await Perfil.findById(body.usuario.perfilId)
         perfil.reservas = [...perfil.reservas, {...body}]
 
         await perfil.save()
 
-        const cuidador = await Cuidador.findById(body.cuidador.cuidadorId)
         cuidador.reservado = [...cuidador.reservado, {...body}]
           
         await cuidador.save()
@@ -81,8 +100,15 @@ const patchReserva = async (req, res, next) => {
 
         const { body } = req
 
-        await Reserva.findByIdAndUpdate( _id, body )
-        
+        const actualizada = await Reserva.findByIdAndUpdate( _id, body )
+      /* 404 si el id no existe */
+        if (!actualizada) {
+            return res.status(404).json({
+                message: `No existe la reserva con id ${_id}`,
+                data: null
+            })
+        }
+
         const data = await Reserva.find()
 
          res.status(200).json({
@@ -94,11 +120,20 @@ const patchReserva = async (req, res, next) => {
     }
 }
 
+/* Borra la reserva y también su copia en el array reservado del cuidador */
 const deleteReserva = async (req, res, next) => {
     try{
         const { _id } = req.params
 
         const reserva = await Reserva.findByIdAndDelete( _id )
+
+        /* 404 si no existe (evita romper al leer reserva.cuidador) */
+        if (!reserva) {
+            return res.status(404).json({
+                message: `No existe la reserva con id ${_id}`,
+                data: null
+            })
+        }
 
         const cuidador = await Cuidador.findById( reserva.cuidador.cuidadorId )
         cuidador.reservado = [... cuidador.reservado.filter( reserva => `${reserva.bookingId}` !== `${ _id }` ) ]

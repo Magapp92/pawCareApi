@@ -24,6 +24,7 @@ app.use( express.json() )
 app.use( express.urlencoded({extended : false }) )
 app.use( '/pawcare' , router )
 
+/* Middlewares de error globales */
 app.use( notFound )
 app.use( errorHandler )
 

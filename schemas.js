@@ -1,6 +1,7 @@
-
+/* Schemas de las 4 colecciones */
 const mongoose = require('mongoose')
 
+/* Credenciales de acceso con el rol que decide a qué pantalla entra el front */
 const loginSchema = new mongoose.Schema(
     {
       _id: { type: mongoose.Schema.Types.ObjectId , auto : true },
@@ -18,6 +19,7 @@ const loginSchema = new mongoose.Schema(
     }
 )
 
+/* Cuidador con sus servicios activos, precios y fechas ya reservadas */
 const cuidadorSchema = new mongoose.Schema(
     {
       _id: { type: mongoose.Schema.Types.ObjectId , auto : true },
@@ -26,6 +28,7 @@ const cuidadorSchema = new mongoose.Schema(
       avatarUrl: { type: mongoose.Schema.Types.String },
       ubicacion: { type: mongoose.Schema.Types.String },
       experienciaAnos: { type: mongoose.Schema.Types.Number },
+      miembroDesde: { type: mongoose.Schema.Types.String },
       animalesQueAtiende: [{ type: mongoose.Schema.Types.String }],
       servicios: {
         cuidadoDiario: { type: mongoose.Schema.Types.Boolean },
@@ -58,6 +61,7 @@ const cuidadorSchema = new mongoose.Schema(
     }
 )
 
+/* Perfil del usuario con sus mascotas y un resumen de sus reservas */
 const perfilSchema = new mongoose.Schema(
     {
       _id: { type: mongoose.Schema.Types.ObjectId , auto : true },
@@ -99,6 +103,8 @@ const perfilSchema = new mongoose.Schema(
     }
 )
 
+/* Reserva con copia de los datos del cuidador, la mascota y el usuario
+para volcar la información en las tarjetas */
 const reservaSchema = new mongoose.Schema (
     {
      _id: { type: mongoose.Schema.Types.ObjectId , auto : true },
@@ -107,7 +113,7 @@ const reservaSchema = new mongoose.Schema (
      tipoServicio: { type: mongoose.Schema.Types.String },
      estado: { type: mongoose.Schema.Types.String },
      coste: { type: mongoose.Schema.Types.Number },
-     comentario: { type: mongoose.Schema.Types.Number },
+     comentario: { type: mongoose.Schema.Types.String },
      mensaje: { type: mongoose.Schema.Types.String },
      respuesta: { type: mongoose.Schema.Types.String },
      cuidador: { 
