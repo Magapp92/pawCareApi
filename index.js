@@ -5,11 +5,11 @@ console.log(`Iniciando pawcare api 🐾`)
 const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
-const{ router } = require('./router')
+const { router } = require('./routes/router')
 const { notFound, errorHandler } = require('./middlewares')
 
 require('dotenv').config()
-const{ PORT, MONGO_URI } = process.env
+const { PORT, MONGO_URI } = process.env
 
 const conectar = async () => {
     mongoose.connect(MONGO_URI)
