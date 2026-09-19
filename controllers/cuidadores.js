@@ -1,4 +1,5 @@
 
+/* Controlador de cuidadores: listados y filtros para el buscador y edición del perfil desde el panel */
 const { Cuidador } = require('../models')
 
 /* Lista completa de cuidadores para la página de inicio */
@@ -15,6 +16,8 @@ const getCuidadores = async (req, res, next) => {
     }
 }
 
+/* Ficha de un cuidador: la usan la página de detalle y el panel del propio cuidador,
+que entra con el mismo _id que su documento de login */
 const getCuidadoresById = async (req, res, next) => {
     try {
         const { _id } = req.params
@@ -69,6 +72,7 @@ const getCuidadoresByUbicacion = async (req, res, next) => {
     }
 }
 
+/* Un cuidador atiende a un animal si está en su array animalesQueAtiende */
 const getCuidadoresByAnimal = async (req, res, next) => {
     try{
         const { animal } = req.params
@@ -90,7 +94,7 @@ const putCuidador = async (req, res, next) => {
       const { _id } = req.params
       const { body } = req
 
-      const actualizado = await Cuidador.findByIdAndUpdate(_id, body)
+      const actualizado = await Cuidador.findByIdAndUpdate(_id, body, { new: true, runValidators: true })
       /* 404 si el id no existe */
       if (!actualizado) {
           return res.status(404).json({

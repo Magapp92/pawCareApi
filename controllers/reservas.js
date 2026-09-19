@@ -1,4 +1,6 @@
 
+/* Controlador de reservas. Cada reserva se guarda en su colección y deja un resumen
+en el perfil del usuario y en el cuidador; todas las respuestas siguen la forma { message, data } */
 const { Reserva, Cuidador, Perfil } = require('../models')
 
 
@@ -17,6 +19,7 @@ const getReservasByPerfil = async (req, res, next) => {
     }
 }
 
+/* Una reserva concreta por su _id */
 const getReservaById = async (req, res, next) => {
     try {
         const { _id } = req.params
@@ -39,6 +42,7 @@ const getReservaById = async (req, res, next) => {
     }
 }
 
+/* Reservas que le han hecho a un cuidador: pendientes, confirmadas y con mensaje las separa el front */
 const getReservaByCuidador = async (req, res, next) => {
     try{
       const { _id } = req.params
@@ -94,13 +98,15 @@ const postReserva = async (req, res, next) => {
     }
 }
 
+/* Cambia el estado, las fechas, el comentario o el mensaje; el enum del schema
+solo admite Pendiente o Confirmada como estado */
 const patchReserva = async (req, res, next) => {
     try{
         const { _id } = req.params
 
         const { body } = req
 
-        const actualizada = await Reserva.findByIdAndUpdate( _id, body )
+        const actualizada = await Reserva.findByIdAndUpdate( _id, body, { new: true, runValidators: true } )
       /* 404 si el id no existe */
         if (!actualizada) {
             return res.status(404).json({

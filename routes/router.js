@@ -1,6 +1,6 @@
 
 const express = require('express')
-const { notFound, errorHandler } = require('../middlewares')
+const { notFound, errorHandler, verificarToken } = require('../middlewares')
 const { postLogin } = require('../controllers/login')
 const { getCuidadores, getCuidadoresById, getCuidadoresByUbicacion, getCuidadoresByServicio,
      getCuidadoresByAnimal, putCuidador } = require('../controllers/cuidadores')
@@ -11,15 +11,17 @@ const { getPerfilById, postMascota, patchPerfil, patchMascota,
 const router = express.Router()
 
 /* Rutas agrupadas por recurso con .route() para encadenar los verbos de cada endpoint */
+/* Autenticación: el único POST público, devuelve el token que exigen las escrituras */
 router.route('/login')
 .post( postLogin )
 
+/* Cuidadores: lectura pública para el buscador; solo el PUT del panel exige token */
 router.route('/cuidadores')
 .get( getCuidadores )
 
 router.route('/cuidadores/:_id')
 .get( getCuidadoresById )
-.put( putCuidador )
+.put( verificarToken, putCuidador )
 
 router.route('/cuidadores/servicios/:servicio')
 .get( getCuidadoresByServicio )
@@ -30,13 +32,14 @@ router.route('/cuidadores/ubicacion/:ubicacion')
 router.route('/cuidadores/animalesQueAtiende/:animal')
 .get( getCuidadoresByAnimal )
 
+/* Reservas: crear, cambiar estado o borrar exige token; las lecturas son públicas */
 router.route('/reservas')
-.post( postReserva )
+.post( verificarToken, postReserva )
 
 router.route('/reservas/:_id')
 .get( getReservaById )
-.patch( patchReserva )
-.delete( deleteReserva)
+.patch( verificarToken, patchReserva )
+.delete( verificarToken, deleteReserva )
 
 router.route('/reservas/usuario/:_id')
 .get( getReservasByPerfil )
@@ -44,16 +47,17 @@ router.route('/reservas/usuario/:_id')
 router.route('/reservas/cuidador/:_id')
 .get( getReservaByCuidador )
 
+/* Perfiles y sus mascotas: cualquier cambio exige token */
 router.route('/perfiles/:_id')
 .get( getPerfilById )
-.patch( patchPerfil )
+.patch( verificarToken, patchPerfil )
 
 router.route('/perfiles/:_id/mascotas')
-.post( postMascota )
+.post( verificarToken, postMascota )
 
 router.route('/perfiles/:_id/mascotas/:mascotaId')
-.patch( patchMascota )
-.delete( deleteMascota )
+.patch( verificarToken, patchMascota )
+.delete( verificarToken, deleteMascota )
 
 /* Los middlewares de error van al final: notFound atrapa rutas no definidas
 y errorHandler responde a los next(error) de los controllers */

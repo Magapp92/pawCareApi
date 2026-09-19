@@ -1,565 +1,735 @@
-[{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40d1"
+[
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40d2"
+    },
+    "nombre": "José Fernández",
+    "edad": 35,
+    "avatarUrl": "/imagenes/JoseFernandez.webp",
+    "ubicacion": "Barcelona",
+    "experienciaAnos": 6,
+    "animalesQueAtiende": [
+      "perro"
+    ],
+    "servicios": {
+      "cuidadoDiario": true,
+      "largaEstancia": false,
+      "paseador": true,
+      "peluqueria": false
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 20,
+      "largaEstancia": 0,
+      "paseador": 12,
+      "peluqueria": 0
+    },
+    "reservado": [],
+    "miembroDesde": "2020"
   },
-  "nombre": "María López",
-  "edad": 28,
-  "avatarUrl": "https://i.pravatar.cc/150?img=5",
-  "ubicacion": "Madrid",
-  "experienciaAnos": 4,
-  "animalesQueAtiende": [
-    "perro",
-    "gato"
-  ],
-  "servicios": {
-    "cuidadoDiario": true,
-    "largaEstancia": true,
-    "paseador": false,
-    "peluqueria": false
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40d3"
+    },
+    "nombre": "Sara Gómez",
+    "edad": 24,
+    "avatarUrl": "/imagenes/SaraGomez.webp",
+    "ubicacion": "Madrid",
+    "experienciaAnos": 2,
+    "animalesQueAtiende": [
+      "perro",
+      "gato",
+      "conejo"
+    ],
+    "servicios": {
+      "cuidadoDiario": false,
+      "largaEstancia": false,
+      "paseador": true,
+      "peluqueria": true
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 0,
+      "largaEstancia": 0,
+      "paseador": 10,
+      "peluqueria": 35
+    },
+    "reservado": [
+      {
+        "fechaInicio": "2026-10-15 17:30",
+        "fechaFin": "2026-10-15 17:30",
+        "_id": {
+          "$oid": "6a3efbed24eb87c0ffb85d5a"
+        }
+      },
+      {
+        "fechaInicio": "2027-01-10 10:00",
+        "fechaFin": "2027-01-10 10:00",
+        "_id": {
+          "$oid": "6a3f0e2327c4bc70e8080277"
+        }
+      },
+      {
+        "fechaInicio": "2027-01-10 10:00",
+        "fechaFin": "2027-01-10 10:00",
+        "_id": {
+          "$oid": "6a3f0e2327c4bc70e8080286"
+        }
+      },
+      {
+        "fechaInicio": "2026-07-26 11:00",
+        "fechaFin": "2026-07-26 11:00",
+        "_id": {
+          "$oid": "6a53b862b7c4840e8416d451"
+        }
+      },
+      {
+        "fechaInicio": "2026-07-26 11:00",
+        "fechaFin": "2026-07-26 11:00",
+        "_id": {
+          "$oid": "6a53b863b7c4840e8416d46c"
+        }
+      }
+    ],
+    "miembroDesde": "2021"
   },
-  "valoracion": 4.9,
-  "preciosPorServicio": {
-    "cuidadoDiario": 25,
-    "largaEstancia": 35,
-    "paseador": 0,
-    "peluqueria": 0
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40db"
+    },
+    "nombre": "Elena Castillo",
+    "edad": 26,
+    "avatarUrl": "/imagenes/ElenaCastillo.webp",
+    "ubicacion": "Madrid",
+    "experienciaAnos": 2,
+    "animalesQueAtiende": [
+      "perro",
+      "gato",
+      "ave"
+    ],
+    "servicios": {
+      "cuidadoDiario": true,
+      "largaEstancia": false,
+      "paseador": true,
+      "peluqueria": false
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 17,
+      "largaEstancia": 0,
+      "paseador": 9,
+      "peluqueria": 0
+    },
+    "reservado": [
+      {
+        "fechaInicio": "2026-07-27 08:30",
+        "fechaFin": "2026-07-27 11:30",
+        "_id": {
+          "$oid": "6a53bacc270f72479bfa0c50"
+        }
+      }
+    ],
+    "miembroDesde": "2023"
   },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40d2"
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40dd"
+    },
+    "nombre": "Natalia Herrera",
+    "edad": 30,
+    "avatarUrl": "/imagenes/NataliaHerrera.webp",
+    "ubicacion": "Valencia",
+    "experienciaAnos": 4,
+    "animalesQueAtiende": [
+      "gato",
+      "conejo",
+      "ave"
+    ],
+    "servicios": {
+      "cuidadoDiario": true,
+      "largaEstancia": false,
+      "paseador": false,
+      "peluqueria": true
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 19,
+      "largaEstancia": 0,
+      "paseador": 0,
+      "peluqueria": 32
+    },
+    "reservado": [
+      {
+        "fechaInicio": "2026-06-28",
+        "fechaFin": "2026-06-28",
+        "_id": {
+          "$oid": "6a3ef9f524eb87c0ffb85d0d"
+        }
+      },
+      {
+        "fechaInicio": "2026-06-28",
+        "fechaFin": "2026-06-28",
+        "_id": {
+          "$oid": "6a3ef9f524eb87c0ffb85d15"
+        }
+      }
+    ],
+    "miembroDesde": "2019"
   },
-  "nombre": "José Fernández",
-  "edad": 35,
-  "avatarUrl": "https://i.pravatar.cc/150?img=15",
-  "ubicacion": "Barcelona",
-  "experienciaAnos": 6,
-  "animalesQueAtiende": [
-    "perro"
-  ],
-  "servicios": {
-    "cuidadoDiario": true,
-    "largaEstancia": false,
-    "paseador": true,
-    "peluqueria": false
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40de"
+    },
+    "nombre": "Francisco Molina",
+    "edad": 36,
+    "avatarUrl": "/imagenes/FranciscoMolina.webp",
+    "ubicacion": "Madrid",
+    "experienciaAnos": 6,
+    "animalesQueAtiende": [
+      "perro",
+      "gato"
+    ],
+    "servicios": {
+      "cuidadoDiario": false,
+      "largaEstancia": true,
+      "paseador": false,
+      "peluqueria": true
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 0,
+      "largaEstancia": 36,
+      "paseador": 0,
+      "peluqueria": 38
+    },
+    "reservado": [
+      {
+        "fechaInicio": "2026-07-17 11:00",
+        "fechaFin": "2026-07-17 11:00",
+        "_id": {
+          "$oid": "6a53bb25270f72479bfa0c9f"
+        }
+      }
+    ],
+    "miembroDesde": "2020"
   },
-  "valoracion": 4.7,
-  "preciosPorServicio": {
-    "cuidadoDiario": 20,
-    "largaEstancia": 0,
-    "paseador": 12,
-    "peluqueria": 0
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40e0"
+    },
+    "nombre": "Javier Reyes",
+    "edad": 39,
+    "avatarUrl": "/imagenes/JavierReyes.webp",
+    "ubicacion": "Málaga",
+    "experienciaAnos": 7,
+    "animalesQueAtiende": [
+      "perro",
+      "gato",
+      "conejo"
+    ],
+    "servicios": {
+      "cuidadoDiario": true,
+      "largaEstancia": true,
+      "paseador": false,
+      "peluqueria": false
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 26,
+      "largaEstancia": 36,
+      "paseador": 0,
+      "peluqueria": 0
+    },
+    "reservado": [],
+    "miembroDesde": "2022"
   },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40d3"
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40e1"
+    },
+    "nombre": "Patricia Flores",
+    "edad": 25,
+    "avatarUrl": "/imagenes/PatriciaFlores.webp",
+    "ubicacion": "Zaragoza",
+    "experienciaAnos": 1,
+    "animalesQueAtiende": [
+      "perro"
+    ],
+    "servicios": {
+      "cuidadoDiario": false,
+      "largaEstancia": false,
+      "paseador": true,
+      "peluqueria": false
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 0,
+      "largaEstancia": 0,
+      "paseador": 8,
+      "peluqueria": 0
+    },
+    "reservado": [],
+    "miembroDesde": "2023"
   },
-  "nombre": "Sara Gómez",
-  "edad": 24,
-  "avatarUrl": "https://i.pravatar.cc/150?img=25",
-  "ubicacion": "Madrid",
-  "experienciaAnos": 2,
-  "animalesQueAtiende": [
-    "perro",
-    "gato",
-    "conejo"
-  ],
-  "servicios": {
-    "cuidadoDiario": false,
-    "largaEstancia": false,
-    "paseador": true,
-    "peluqueria": true
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40e3"
+    },
+    "nombre": "Cristina Guerrero",
+    "edad": 37,
+    "avatarUrl": "/imagenes/CristinaGuerrero.webp",
+    "ubicacion": "Huelva",
+    "experienciaAnos": 8,
+    "animalesQueAtiende": [
+      "gato",
+      "conejo"
+    ],
+    "servicios": {
+      "cuidadoDiario": true,
+      "largaEstancia": true,
+      "paseador": false,
+      "peluqueria": true
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 28,
+      "largaEstancia": 38,
+      "paseador": 0,
+      "peluqueria": 42
+    },
+    "reservado": [],
+    "miembroDesde": "2019"
   },
-  "valoracion": 4.5,
-  "preciosPorServicio": {
-    "cuidadoDiario": 0,
-    "largaEstancia": 0,
-    "paseador": 10,
-    "peluqueria": 35
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40d6"
+    },
+    "nombre": "Miguel Torres",
+    "edad": 27,
+    "avatarUrl": "/imagenes/MiguelTorres.webp",
+    "ubicacion": "Málaga",
+    "experienciaAnos": 3,
+    "animalesQueAtiende": [
+      "perro",
+      "gato"
+    ],
+    "servicios": {
+      "cuidadoDiario": false,
+      "largaEstancia": false,
+      "paseador": true,
+      "peluqueria": true
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 0,
+      "largaEstancia": 0,
+      "paseador": 11,
+      "peluqueria": 28
+    },
+    "reservado": [],
+    "miembroDesde": "2024"
   },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40d4"
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40df"
+    },
+    "nombre": "Silvia Ortega",
+    "edad": 32,
+    "avatarUrl": "/imagenes/SilviaOrtega.webp",
+    "ubicacion": "Barcelona",
+    "experienciaAnos": 5,
+    "animalesQueAtiende": [
+      "perro",
+      "conejo"
+    ],
+    "servicios": {
+      "cuidadoDiario": true,
+      "largaEstancia": true,
+      "paseador": true,
+      "peluqueria": false
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 24,
+      "largaEstancia": 34,
+      "paseador": 13,
+      "peluqueria": 0
+    },
+    "reservado": [],
+    "miembroDesde": "2021"
   },
-  "nombre": "Pedro Sánchez",
-  "edad": 40,
-  "avatarUrl": "https://i.pravatar.cc/150?img=20",
-  "ubicacion": "Valencia",
-  "experienciaAnos": 8,
-  "animalesQueAtiende": [
-    "perro",
-    "gato",
-    "ave"
-  ],
-  "servicios": {
-    "cuidadoDiario": true,
-    "largaEstancia": true,
-    "paseador": true,
-    "peluqueria": false
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40d7"
+    },
+    "nombre": "Carmen Díaz",
+    "edad": 45,
+    "avatarUrl": "/imagenes/CarmenDiaz.webp",
+    "ubicacion": "Bilbao",
+    "experienciaAnos": 10,
+    "animalesQueAtiende": [
+      "perro",
+      "gato",
+      "conejo",
+      "ave"
+    ],
+    "servicios": {
+      "cuidadoDiario": true,
+      "largaEstancia": true,
+      "paseador": false,
+      "peluqueria": true
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 30,
+      "largaEstancia": 40,
+      "paseador": 0,
+      "peluqueria": 40
+    },
+    "reservado": [],
+    "miembroDesde": "2019"
   },
-  "valoracion": 4.8,
-  "preciosPorServicio": {
-    "cuidadoDiario": 22,
-    "largaEstancia": 32,
-    "paseador": 14,
-    "peluqueria": 0
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40d9"
+    },
+    "nombre": "Isabel Romero",
+    "edad": 38,
+    "avatarUrl": "/imagenes/IsabelRomero.webp",
+    "ubicacion": "Sevilla",
+    "experienciaAnos": 7,
+    "animalesQueAtiende": [
+      "gato",
+      "conejo"
+    ],
+    "servicios": {
+      "cuidadoDiario": true,
+      "largaEstancia": true,
+      "paseador": false,
+      "peluqueria": false
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 20,
+      "largaEstancia": 30,
+      "paseador": 0,
+      "peluqueria": 0
+    },
+    "reservado": [
+      {
+        "fechaInicio": "2026-07-07 10:30",
+        "fechaFin": "2026-07-07 11:30",
+        "_id": {
+          "$oid": "6a4a370c27c4bc70e8080707"
+        }
+      },
+      {
+        "fechaInicio": "2026-07-07 10:30",
+        "fechaFin": "2026-07-07 11:30",
+        "_id": {
+          "$oid": "6a4a370c27c4bc70e8080718"
+        }
+      }
+    ],
+    "miembroDesde": "2021"
   },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40d5"
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40da"
+    },
+    "nombre": "David Navarro",
+    "edad": 33,
+    "avatarUrl": "/imagenes/DavidNavarro.webp",
+    "ubicacion": "Valencia",
+    "experienciaAnos": 5,
+    "animalesQueAtiende": [
+      "perro",
+      "gato"
+    ],
+    "servicios": {
+      "cuidadoDiario": false,
+      "largaEstancia": true,
+      "paseador": true,
+      "peluqueria": false
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 0,
+      "largaEstancia": 28,
+      "paseador": 13,
+      "peluqueria": 0
+    },
+    "reservado": [],
+    "miembroDesde": "2022"
   },
-  "nombre": "Laura Jiménez",
-  "edad": 31,
-  "avatarUrl": "https://i.pravatar.cc/150?img=9",
-  "ubicacion": "Cadiz",
-  "experienciaAnos": 5,
-  "animalesQueAtiende": [
-    "perro"
-  ],
-  "servicios": {
-    "cuidadoDiario": true,
-    "largaEstancia": true,
-    "paseador": false,
-    "peluqueria": false
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40e2"
+    },
+    "nombre": "Alejandro Santos",
+    "edad": 34,
+    "avatarUrl": "/imagenes/AlejandroSantos.webp",
+    "ubicacion": "Alicante",
+    "experienciaAnos": 6,
+    "animalesQueAtiende": [
+      "perro",
+      "gato",
+      "ave"
+    ],
+    "servicios": {
+      "cuidadoDiario": true,
+      "largaEstancia": false,
+      "paseador": true,
+      "peluqueria": true
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 21,
+      "largaEstancia": 0,
+      "paseador": 12,
+      "peluqueria": 30
+    },
+    "reservado": [],
+    "miembroDesde": "2024"
   },
-  "valoracion": 4.6,
-  "preciosPorServicio": {
-    "cuidadoDiario": 23,
-    "largaEstancia": 33,
-    "paseador": 0,
-    "peluqueria": 0
+  {
+    "_id": {
+      "$oid": "6a39ba3f5b40aa65904a40e6"
+    },
+    "nombre": "Ana Guerrero",
+    "edad": 34,
+    "avatarUrl": "/imagenes/AnaGuerrero.webp",
+    "experienciaAnos": 5,
+    "animalesQueAtiende": [
+      "perro",
+      "gato",
+      "conejo"
+    ],
+    "servicios": {
+      "cuidadoDiario": true,
+      "largaEstancia": true,
+      "paseador": true,
+      "peluqueria": false
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 18,
+      "largaEstancia": 30,
+      "paseador": 10,
+      "peluqueria": 0
+    },
+    "reservado": [
+      {
+        "fechaInicio": "2026-11-01",
+        "fechaFin": "2026-11-03",
+        "_id": {
+          "$oid": "6a3ef5fb24eb87c0ffb85cdf"
+        }
+      },
+      {
+        "fechaInicio": "2026-06-27",
+        "fechaFin": "2026-06-29",
+        "_id": {
+          "$oid": "6a3f019127c4bc70e807ff5a"
+        }
+      },
+      {
+        "fechaInicio": "2026-06-27",
+        "fechaFin": "2026-06-29",
+        "_id": {
+          "$oid": "6a3f019127c4bc70e807ff66"
+        }
+      },
+      {
+        "fechaInicio": "2026-12-10",
+        "fechaFin": "2026-12-12",
+        "_id": {
+          "$oid": "6a3f02a327c4bc70e807ffab"
+        }
+      },
+      {
+        "fechaInicio": "2027-02-01 09:00",
+        "fechaFin": "2027-02-01 17:00",
+        "_id": {
+          "$oid": "6a3f0ec727c4bc70e808034a"
+        }
+      },
+      {
+        "fechaInicio": "2026-07-07 16:00",
+        "fechaFin": "2026-07-07 16:00",
+        "_id": {
+          "$oid": "6a4a9ad1b1280044d817de0b"
+        }
+      },
+      {
+        "fechaInicio": "2026-07-18",
+        "fechaFin": "2026-07-25",
+        "_id": {
+          "$oid": "6a53b830b7c4840e8416d3b6"
+        }
+      },
+      {
+        "fechaInicio": "2026-07-18",
+        "fechaFin": "2026-07-25",
+        "_id": {
+          "$oid": "6a53b831b7c4840e8416d3d1"
+        }
+      },
+      {
+        "fechaInicio": "2026-07-18",
+        "fechaFin": "2026-07-25",
+        "_id": {
+          "$oid": "6a53b831b7c4840e8416d3ee"
+        }
+      },
+      {
+        "fechaInicio": "2026-07-17 19:00",
+        "fechaFin": "2026-07-17 19:00",
+        "_id": {
+          "$oid": "6a53b888011777bc59508b7d"
+        }
+      },
+      {
+        "fechaInicio": "2026-07-17 19:00",
+        "fechaFin": "2026-07-17 19:00",
+        "_id": {
+          "$oid": "6a53b889011777bc59508ba0"
+        }
+      },
+      {
+        "fechaInicio": "2026-07-23 10:00",
+        "fechaFin": "2026-07-23 14:30",
+        "_id": {
+          "$oid": "6a567947e6792b72faadd765"
+        }
+      }
+    ],
+    "miembroDesde": "2019",
+    "ubicacion": "Madrid"
   },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40d6"
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40d4"
+    },
+    "nombre": "Pedro Sánchez",
+    "edad": 40,
+    "avatarUrl": "/imagenes/PedroSanchez.webp",
+    "ubicacion": "Valencia",
+    "experienciaAnos": 8,
+    "animalesQueAtiende": [
+      "perro",
+      "gato",
+      "ave"
+    ],
+    "servicios": {
+      "cuidadoDiario": true,
+      "largaEstancia": true,
+      "paseador": true,
+      "peluqueria": false
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 22,
+      "largaEstancia": 32,
+      "paseador": 14,
+      "peluqueria": 0
+    },
+    "reservado": [],
+    "miembroDesde": "2022"
   },
-  "nombre": "Miguel Torres",
-  "edad": 27,
-  "avatarUrl": "https://i.pravatar.cc/150?img=33",
-  "ubicacion": "Málaga",
-  "experienciaAnos": 3,
-  "animalesQueAtiende": [
-    "perro",
-    "gato"
-  ],
-  "servicios": {
-    "cuidadoDiario": false,
-    "largaEstancia": false,
-    "paseador": true,
-    "peluqueria": true
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40d5"
+    },
+    "nombre": "Laura Jiménez",
+    "edad": 31,
+    "avatarUrl": "/imagenes/LauraJimenez.webp",
+    "ubicacion": "Cadiz",
+    "experienciaAnos": 5,
+    "animalesQueAtiende": [
+      "perro"
+    ],
+    "servicios": {
+      "cuidadoDiario": true,
+      "largaEstancia": true,
+      "paseador": false,
+      "peluqueria": false
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 23,
+      "largaEstancia": 33,
+      "paseador": 0,
+      "peluqueria": 0
+    },
+    "reservado": [],
+    "miembroDesde": "2023"
   },
-  "valoracion": 4.4,
-  "preciosPorServicio": {
-    "cuidadoDiario": 0,
-    "largaEstancia": 0,
-    "paseador": 11,
-    "peluqueria": 28
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40d8"
+    },
+    "nombre": "Andrés Moreno",
+    "edad": 29,
+    "avatarUrl": "/imagenes/AndresMoreno.webp",
+    "ubicacion": "Madrid",
+    "experienciaAnos": 3,
+    "animalesQueAtiende": [
+      "perro"
+    ],
+    "servicios": {
+      "cuidadoDiario": true,
+      "largaEstancia": false,
+      "paseador": true,
+      "peluqueria": false
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 18,
+      "largaEstancia": 0,
+      "paseador": 10,
+      "peluqueria": 0
+    },
+    "reservado": [],
+    "miembroDesde": "2020"
   },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40d7"
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40dc"
+    },
+    "nombre": "Roberto Vega",
+    "edad": 42,
+    "avatarUrl": "/imagenes/RobertoVega.webp",
+    "ubicacion": "Cadiz",
+    "experienciaAnos": 9,
+    "animalesQueAtiende": [
+      "perro"
+    ],
+    "servicios": {
+      "cuidadoDiario": true,
+      "largaEstancia": true,
+      "paseador": true,
+      "peluqueria": false
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 27,
+      "largaEstancia": 37,
+      "paseador": 15,
+      "peluqueria": 0
+    },
+    "reservado": [],
+    "miembroDesde": "2024"
   },
-  "nombre": "Carmen Díaz",
-  "edad": 45,
-  "avatarUrl": "https://i.pravatar.cc/150?img=44",
-  "ubicacion": "Bilbao",
-  "experienciaAnos": 10,
-  "animalesQueAtiende": [
-    "perro",
-    "gato",
-    "conejo",
-    "ave"
-  ],
-  "servicios": {
-    "cuidadoDiario": true,
-    "largaEstancia": true,
-    "paseador": false,
-    "peluqueria": true
-  },
-  "valoracion": 5,
-  "preciosPorServicio": {
-    "cuidadoDiario": 30,
-    "largaEstancia": 40,
-    "paseador": 0,
-    "peluqueria": 40
-  },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40d8"
-  },
-  "nombre": "Andrés Moreno",
-  "edad": 29,
-  "avatarUrl": "https://i.pravatar.cc/150?img=52",
-  "ubicacion": "Madrid",
-  "experienciaAnos": 3,
-  "animalesQueAtiende": [
-    "perro"
-  ],
-  "servicios": {
-    "cuidadoDiario": true,
-    "largaEstancia": false,
-    "paseador": true,
-    "peluqueria": false
-  },
-  "valoracion": 4.3,
-  "preciosPorServicio": {
-    "cuidadoDiario": 18,
-    "largaEstancia": 0,
-    "paseador": 10,
-    "peluqueria": 0
-  },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40d9"
-  },
-  "nombre": "Isabel Romero",
-  "edad": 38,
-  "avatarUrl": "https://i.pravatar.cc/150?img=41",
-  "ubicacion": "Sevilla",
-  "experienciaAnos": 7,
-  "animalesQueAtiende": [
-    "gato",
-    "conejo"
-  ],
-  "servicios": {
-    "cuidadoDiario": true,
-    "largaEstancia": true,
-    "paseador": false,
-    "peluqueria": false
-  },
-  "valoracion": 4.7,
-  "preciosPorServicio": {
-    "cuidadoDiario": 20,
-    "largaEstancia": 30,
-    "paseador": 0,
-    "peluqueria": 0
-  },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40da"
-  },
-  "nombre": "David Navarro",
-  "edad": 33,
-  "avatarUrl": "https://i.pravatar.cc/150?img=60",
-  "ubicacion": "Valencia",
-  "experienciaAnos": 5,
-  "animalesQueAtiende": [
-    "perro",
-    "gato"
-  ],
-  "servicios": {
-    "cuidadoDiario": false,
-    "largaEstancia": true,
-    "paseador": true,
-    "peluqueria": false
-  },
-  "valoracion": 4.6,
-  "preciosPorServicio": {
-    "cuidadoDiario": 0,
-    "largaEstancia": 28,
-    "paseador": 13,
-    "peluqueria": 0
-  },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40db"
-  },
-  "nombre": "Elena Castillo",
-  "edad": 26,
-  "avatarUrl": "https://i.pravatar.cc/150?img=16",
-  "ubicacion": "Madrid",
-  "experienciaAnos": 2,
-  "animalesQueAtiende": [
-    "perro",
-    "gato",
-    "ave"
-  ],
-  "servicios": {
-    "cuidadoDiario": true,
-    "largaEstancia": false,
-    "paseador": true,
-    "peluqueria": false
-  },
-  "valoracion": 4.2,
-  "preciosPorServicio": {
-    "cuidadoDiario": 17,
-    "largaEstancia": 0,
-    "paseador": 9,
-    "peluqueria": 0
-  },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40dc"
-  },
-  "nombre": "Roberto Vega",
-  "edad": 42,
-  "avatarUrl": "https://i.pravatar.cc/150?img=57",
-  "ubicacion": "Cadiz",
-  "experienciaAnos": 9,
-  "animalesQueAtiende": [
-    "perro"
-  ],
-  "servicios": {
-    "cuidadoDiario": true,
-    "largaEstancia": true,
-    "paseador": true,
-    "peluqueria": false
-  },
-  "valoracion": 4.8,
-  "preciosPorServicio": {
-    "cuidadoDiario": 27,
-    "largaEstancia": 37,
-    "paseador": 15,
-    "peluqueria": 0
-  },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40dd"
-  },
-  "nombre": "Natalia Herrera",
-  "edad": 30,
-  "avatarUrl": "https://i.pravatar.cc/150?img=38",
-  "ubicacion": "Valencia",
-  "experienciaAnos": 4,
-  "animalesQueAtiende": [
-    "gato",
-    "conejo",
-    "ave"
-  ],
-  "servicios": {
-    "cuidadoDiario": true,
-    "largaEstancia": false,
-    "paseador": false,
-    "peluqueria": true
-  },
-  "valoracion": 4.5,
-  "preciosPorServicio": {
-    "cuidadoDiario": 19,
-    "largaEstancia": 0,
-    "paseador": 0,
-    "peluqueria": 32
-  },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40de"
-  },
-  "nombre": "Francisco Molina",
-  "edad": 36,
-  "avatarUrl": "https://i.pravatar.cc/150?img=53",
-  "ubicacion": "Madrid",
-  "experienciaAnos": 6,
-  "animalesQueAtiende": [
-    "perro",
-    "gato"
-  ],
-  "servicios": {
-    "cuidadoDiario": false,
-    "largaEstancia": true,
-    "paseador": false,
-    "peluqueria": true
-  },
-  "valoracion": 4.6,
-  "preciosPorServicio": {
-    "cuidadoDiario": 0,
-    "largaEstancia": 36,
-    "paseador": 0,
-    "peluqueria": 38
-  },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40df"
-  },
-  "nombre": "Silvia Ortega",
-  "edad": 32,
-  "avatarUrl": "https://i.pravatar.cc/150?img=29",
-  "ubicacion": "Barcelona",
-  "experienciaAnos": 5,
-  "animalesQueAtiende": [
-    "perro",
-    "conejo"
-  ],
-  "servicios": {
-    "cuidadoDiario": true,
-    "largaEstancia": true,
-    "paseador": true,
-    "peluqueria": false
-  },
-  "valoracion": 4.7,
-  "preciosPorServicio": {
-    "cuidadoDiario": 24,
-    "largaEstancia": 34,
-    "paseador": 13,
-    "peluqueria": 0
-  },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40e0"
-  },
-  "nombre": "Javier Reyes",
-  "edad": 39,
-  "avatarUrl": "https://i.pravatar.cc/150?img=65",
-  "ubicacion": "Málaga",
-  "experienciaAnos": 7,
-  "animalesQueAtiende": [
-    "perro",
-    "gato",
-    "conejo"
-  ],
-  "servicios": {
-    "cuidadoDiario": true,
-    "largaEstancia": true,
-    "paseador": false,
-    "peluqueria": false
-  },
-  "valoracion": 4.8,
-  "preciosPorServicio": {
-    "cuidadoDiario": 26,
-    "largaEstancia": 36,
-    "paseador": 0,
-    "peluqueria": 0
-  },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40e1"
-  },
-  "nombre": "Patricia Flores",
-  "edad": 25,
-  "avatarUrl": "https://i.pravatar.cc/150?img=19",
-  "ubicacion": "Zaragoza",
-  "experienciaAnos": 1,
-  "animalesQueAtiende": [
-    "perro"
-  ],
-  "servicios": {
-    "cuidadoDiario": false,
-    "largaEstancia": false,
-    "paseador": true,
-    "peluqueria": false
-  },
-  "valoracion": 4.1,
-  "preciosPorServicio": {
-    "cuidadoDiario": 0,
-    "largaEstancia": 0,
-    "paseador": 8,
-    "peluqueria": 0
-  },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40e2"
-  },
-  "nombre": "Alejandro Santos",
-  "edad": 34,
-  "avatarUrl": "https://i.pravatar.cc/150?img=48",
-  "ubicacion": "Alicante",
-  "experienciaAnos": 6,
-  "animalesQueAtiende": [
-    "perro",
-    "gato",
-    "ave"
-  ],
-  "servicios": {
-    "cuidadoDiario": true,
-    "largaEstancia": false,
-    "paseador": true,
-    "peluqueria": true
-  },
-  "valoracion": 4.6,
-  "preciosPorServicio": {
-    "cuidadoDiario": 21,
-    "largaEstancia": 0,
-    "paseador": 12,
-    "peluqueria": 30
-  },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40e3"
-  },
-  "nombre": "Cristina Guerrero",
-  "edad": 37,
-  "avatarUrl": "https://i.pravatar.cc/150?img=23",
-  "ubicacion": "Huelva",
-  "experienciaAnos": 8,
-  "animalesQueAtiende": [
-    "gato",
-    "conejo"
-  ],
-  "servicios": {
-    "cuidadoDiario": true,
-    "largaEstancia": true,
-    "paseador": false,
-    "peluqueria": true
-  },
-  "valoracion": 4.9,
-  "preciosPorServicio": {
-    "cuidadoDiario": 28,
-    "largaEstancia": 38,
-    "paseador": 0,
-    "peluqueria": 42
-  },
-  "reservado": []
-},
-{
-  "_id": {
-    "$oid": "6a39ba345b40aa65904a40e4"
-  },
-  "nombre": "Raúl Mendoza",
-  "edad": 43,
-  "avatarUrl": "https://i.pravatar.cc/150?img=70",
-  "ubicacion": "Barcelona",
-  "experienciaAnos": 11,
-  "animalesQueAtiende": [
-    "perro",
-    "gato",
-    "conejo",
-    "ave"
-  ],
-  "servicios": {
-    "cuidadoDiario": true,
-    "largaEstancia": true,
-    "paseador": true,
-    "peluqueria": true
-  },
-  "valoracion": 5,
-  "preciosPorServicio": {
-    "cuidadoDiario": 30,
-    "largaEstancia": 45,
-    "paseador": 16,
-    "peluqueria": 45
-  },
-  "reservado": []
-}]
+  {
+    "_id": {
+      "$oid": "6a39ba345b40aa65904a40e4"
+    },
+    "nombre": "Raúl Mendoza",
+    "edad": 43,
+    "avatarUrl": "/imagenes/RaulMendoza.webp",
+    "ubicacion": "Barcelona",
+    "experienciaAnos": 11,
+    "animalesQueAtiende": [
+      "perro",
+      "gato",
+      "conejo",
+      "ave"
+    ],
+    "servicios": {
+      "cuidadoDiario": true,
+      "largaEstancia": true,
+      "paseador": true,
+      "peluqueria": true
+    },
+    "preciosPorServicio": {
+      "cuidadoDiario": 30,
+      "largaEstancia": 45,
+      "paseador": 16,
+      "peluqueria": 45
+    },
+    "reservado": [],
+    "miembroDesde": "2020"
+  }
+]

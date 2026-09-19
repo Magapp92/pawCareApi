@@ -1,4 +1,5 @@
 
+const jwt = require('jsonwebtoken')
 const { Login } = require ('../models')
 
 /* Comprueba las credenciales buscando un documento que coincida
@@ -17,11 +18,29 @@ const postLogin = async ( req, res, next ) => {
             })
         }
 
+        /* Token firmado con el id y el rol que caduca en 8 horas; la contraseña no se devuelve */
+        const token = jwt.sign({ 
+            _id: data._id, 
+            rol: data.rol 
+        }, 
+        process.env.JWT_SECRET, 
+        { 
+            expiresIn: '8h' 
+
+        })
+
         res.status(200).json({
             message: 'Login correcto',
-            data
+            data: 
+            {
+            _id: data._id,
+            email: data.email, 
+            rol: data.rol, 
+            token 
+            }
         })
-    } catch (error) {
+    } catch (error) 
+    {
       next(error)
     }
 }

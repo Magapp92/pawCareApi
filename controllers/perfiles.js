@@ -1,4 +1,6 @@
 
+/* Controlador de perfiles de usuario. Las mascotas viven dentro del perfil como subdocumentos,
+por eso se editan cargando el perfil, tocando el array y guardando el documento entero */
 const { Perfil } = require('../models')
 
 /* Perfil del usuario con sus mascotas para Mi perfil y reservar */
@@ -24,13 +26,14 @@ const getPerfilById = async (req, res, next) => {
     }
 }
 
+/* Edita solo los datos personales que lleguen en el body (nombre, teléfono, dirección, foto) */
 const patchPerfil = async (req, res, next) => {
     try{
         const { _id } = req.params
 
         const { body } = req
 
-        const actualizado = await Perfil.findByIdAndUpdate( _id, body )
+        const actualizado = await Perfil.findByIdAndUpdate( _id, body, { new: true, runValidators: true } )
         /* 404 si el id no existe */
         if (!actualizado) {
             return res.status(404).json({
@@ -50,6 +53,8 @@ const patchPerfil = async (req, res, next) => {
     }
 }
 
+/* Añade una mascota al array del perfil y guarda el documento entero,
+así Mongoose valida la mascota nueva con el schema (nombre y especie obligatorios) */
 const postMascota = async (req, res, next) => {
     try{
          const { _id } = req.params
@@ -80,6 +85,7 @@ const postMascota = async (req, res, next) => {
     }
 }
 
+/* Quita la mascota del array comparando los _id como texto, porque en el array son ObjectId */
 const deleteMascota = async (req, res, next) => {
     try{
         const { _id, mascotaId } = req.params
