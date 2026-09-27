@@ -7,6 +7,7 @@ const { Reserva, Cuidador, Perfil } = require('../models')
 /* Reservas de un usuario filtrando por el id, usuario.perfilId */
 const getReservasByPerfil = async (req, res, next) => {
     try {
+        /* Recogemos el id del usuario de la URL y buscamos sus reservas */
         const { _id } = req.params 
         const data = await Reserva.find({ 'usuario.perfilId': _id })
 
@@ -47,6 +48,7 @@ const getReservaByCuidador = async (req, res, next) => {
     try{
       const { _id } = req.params
 
+      /* Buscamos las reservas cuyo cuidador es el de la URL */
       const data = await Reserva.find({'cuidador.cuidadorId': _id })
 
       res.status(200).json({
@@ -75,18 +77,22 @@ const postReserva = async (req, res, next) => {
             })
         }
 
+        /* Creamos la reserva con los datos del formulario */
         const nuevaReserva = new Reserva(body)
 
         await nuevaReserva.save()
 
+        /* Copiamos un resumen en el perfil del usuario */
         perfil.reservas = [...perfil.reservas, {...body}]
 
         await perfil.save()
 
+        /* Y las fechas en el array reservado del cuidador */
         cuidador.reservado = [...cuidador.reservado, {...body}]
           
         await cuidador.save()
 
+        /* Devolvemos todas las reservas actualizadas */
         const data = await Reserva.find()
         
           res.status(201).json({
@@ -131,6 +137,7 @@ const deleteReserva = async (req, res, next) => {
     try{
         const { _id } = req.params
 
+        /* Borramos la reserva y nos quedamos con sus datos para limpiar la copia del cuidador */
         const reserva = await Reserva.findByIdAndDelete( _id )
 
         /* 404 si no existe (evita romper al leer reserva.cuidador) */
@@ -141,6 +148,7 @@ const deleteReserva = async (req, res, next) => {
             })
         }
 
+        /* Quitamos también la copia que tenía el cuidador en reservado */
         const cuidador = await Cuidador.findById( reserva.cuidador.cuidadorId )
         cuidador.reservado = [... cuidador.reservado.filter( reserva => `${reserva.bookingId}` !== `${ _id }` ) ]
         await cuidador.save()
@@ -157,6 +165,7 @@ const deleteReserva = async (req, res, next) => {
 }
 
 
+/* Exportamos los controllers para el router */
 module.exports = {
 getReservasByPerfil,
 getReservaById,

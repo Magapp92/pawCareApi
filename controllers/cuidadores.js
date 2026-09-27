@@ -5,6 +5,7 @@ const { Cuidador } = require('../models')
 /* Lista completa de cuidadores para la página de inicio */
 const getCuidadores = async (req, res, next) => {
     try {
+        /* Pedimos a Mongo todos los cuidadores */
         const data = await Cuidador.find()
 
         res.status(200).json({
@@ -40,9 +41,10 @@ const getCuidadoresById = async (req, res, next) => {
     }
 }
 
-/* Filtra por servicio activo usando la clave dinámica del subdocumento servicios */
+/* Buscamos los cuidadores que tienen activo el servicio que llega en la URL */
 const getCuidadoresByServicio = async (req, res, next) => {
     try{
+        /* Recogemos el servicio de la URL */
         const { servicio } = req.params
 
         const data = await Cuidador.find({ [`servicios.${servicio}`]: true })
@@ -56,9 +58,10 @@ const getCuidadoresByServicio = async (req, res, next) => {
     }
 }
 
-/* $regex acepta coincidencias parciales sin distinguir mayusculas */
+/* Buscamos la ubicación como texto parcial y sin distinguir mayúsculas: 'madrid' o 'Mad' también encuentran Madrid */
 const getCuidadoresByUbicacion = async (req, res, next) => {
     try{
+        /* Recogemos la ubicación de la URL */
         const { ubicacion } = req.params
 
         const data = await Cuidador.find({ ubicacion: { $regex: ubicacion, $options: 'i' } })
@@ -75,6 +78,7 @@ const getCuidadoresByUbicacion = async (req, res, next) => {
 /* Un cuidador atiende a un animal si está en su array animalesQueAtiende */
 const getCuidadoresByAnimal = async (req, res, next) => {
     try{
+        /* Recogemos el animal de la URL */
         const { animal } = req.params
 
         const data = await Cuidador.find({ animalesQueAtiende: animal })
@@ -91,6 +95,7 @@ const getCuidadoresByAnimal = async (req, res, next) => {
 /* Actualiza el perfil completo del cuidador desde su panel */
 const putCuidador = async (req, res, next) => {
     try{
+      /* Recogemos el id de la URL y los datos nuevos del formulario del panel */
       const { _id } = req.params
       const { body } = req
 
@@ -103,6 +108,7 @@ const putCuidador = async (req, res, next) => {
           })
       }
 
+      /* Devolvemos la lista completa para que el front la tenga al día */
       const data = await Cuidador.find()
 
       res.status(200).json({
@@ -115,6 +121,7 @@ const putCuidador = async (req, res, next) => {
 }
 
 
+/* Exportamos los controllers para el router */
 module.exports = {
 getCuidadores,
 getCuidadoresById,

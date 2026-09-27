@@ -2,6 +2,8 @@
 console.clear()
 console.log(`Iniciando pawcare api 🐾`)
 
+/* Cargamos lo que necesita la API: express para el servidor, cors para que la web pueda llamarla,
+helmet y morgan para seguridad y registro de peticiones, y mongoose para hablar con Mongo */
 const express = require('express')
 const cors = require('cors')
 const helmet = require('helmet')
@@ -10,6 +12,7 @@ const mongoose = require('mongoose')
 const { router } = require('./routes/router')
 const { notFound, errorHandler } = require('./middlewares')
 
+/* Leemos el puerto y la cadena de conexión del archivo .env */
 require('dotenv').config()
 const { PORT, MONGO_URI } = process.env
 
@@ -29,8 +32,10 @@ const conectar = () => {
     return conexion
 }
 
+/* Creamos la aplicación de Express */
 const app = express()
 
+/* Permitimos peticiones desde cualquier origen, así la web desplegada puede llamar a la API */
 app.use( cors() )
 /* Helmet añade cabeceras de seguridad y morgan loguea cada petición por consola */
 app.use( helmet() )
@@ -54,16 +59,19 @@ app.use( async ( req, res, next ) => {
     }
 })
 
+/* Todas las rutas de la API cuelgan de /pawcare */
 app.use( '/pawcare' , router )
 
 /* Middlewares de error globales */
 app.use( notFound )
 app.use( errorHandler )
 
+/* Al arrancar intentamos conectar una primera vez y avisamos por consola de cómo ha ido */
 conectar()
     .then(() => console.log(`Conectado a Mongo 🔗`))
     .catch(( error ) => console.log(`Sin conexión a Mongo: ${error.message}`))
 
+/* Arrancamos el servidor en el puerto del .env; en Vercel este archivo se exporta y lo arranca la plataforma */
 app.listen( PORT, () => {
     console.log(`✅Iniciando API en localhost:${PORT}`)
 })

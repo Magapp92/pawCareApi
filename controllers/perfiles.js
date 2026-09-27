@@ -29,6 +29,7 @@ const getPerfilById = async (req, res, next) => {
 /* Edita solo los datos personales que lleguen en el body (nombre, teléfono, dirección, foto) */
 const patchPerfil = async (req, res, next) => {
     try{
+        /* Recogemos el id del perfil y los datos que cambian */
         const { _id } = req.params
 
         const { body } = req
@@ -42,6 +43,7 @@ const patchPerfil = async (req, res, next) => {
             })
         }
 
+        /* Devolvemos los perfiles actualizados */
         const data = await Perfil.find()
 
          res.status(200).json({
@@ -57,10 +59,12 @@ const patchPerfil = async (req, res, next) => {
 así Mongoose valida la mascota nueva con el schema (nombre y especie obligatorios) */
 const postMascota = async (req, res, next) => {
     try{
+        /* Recogemos el id del perfil y los datos de la mascota nueva */
          const { _id } = req.params
 
         const { body } = req
 
+        /* Buscamos el perfil al que pertenece la mascota */
         const perfil = await Perfil.findById( _id )
 
         if (!perfil) {
@@ -70,6 +74,7 @@ const postMascota = async (req, res, next) => {
             })
         }
 
+        /* Añadimos la mascota nueva al final del array y guardamos el perfil */
         perfil.mascotas = [...perfil.mascotas, {...body}]
 
         await perfil.save()
@@ -85,9 +90,10 @@ const postMascota = async (req, res, next) => {
     }
 }
 
-/* Quita la mascota del array comparando los _id como texto, porque en el array son ObjectId */
+/* Quita del array la mascota cuyo id coincide con el de la URL y guarda el perfil */
 const deleteMascota = async (req, res, next) => {
     try{
+        /* Recogemos el id del perfil y el de la mascota de la URL */
         const { _id, mascotaId } = req.params
 
         const perfil = await Perfil.findById( _id )
@@ -117,6 +123,7 @@ const deleteMascota = async (req, res, next) => {
 /* Edita una mascota localizando el subdocumento por su _id */
 const patchMascota = async (req, res, next) => {
     try{
+        /* Recogemos el id del perfil y el de la mascota de la URL */
         const { _id, mascotaId } = req.params
 
         const { body } = req
@@ -132,6 +139,7 @@ const patchMascota = async (req, res, next) => {
             })
         }
 
+        /* Cambiamos solo los campos que llegan y guardamos el perfil entero */
         mascota.set( body )
         await perfil.save()
 
@@ -146,6 +154,7 @@ const patchMascota = async (req, res, next) => {
 
 
 
+/* Exportamos los controllers para el router */
 module.exports= {
     getPerfilById,
     patchPerfil,

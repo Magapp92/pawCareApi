@@ -1,4 +1,5 @@
 
+/* Importamos los controllers de cada recurso y los middlewares de error y de token */
 const express = require('express')
 const { notFound, errorHandler, verificarToken } = require('../middlewares')
 const { postLogin } = require('../controllers/login')
@@ -8,6 +9,7 @@ const { getReservaById, postReserva, patchReserva, deleteReserva, getReservasByP
     getReservaByCuidador } = require('../controllers/reservas')
 const { getPerfilById, postMascota, patchPerfil, patchMascota,
     deleteMascota } = require('../controllers/perfiles')
+/* Creamos el router que index.js monta en /pawcare */
 const router = express.Router()
 
 /* Rutas agrupadas por recurso con .route() para encadenar los verbos de cada endpoint */
@@ -23,6 +25,7 @@ router.route('/cuidadores/:_id')
 .get( getCuidadoresById )
 .put( verificarToken, putCuidador )
 
+/* Filtros del buscador: por servicio, por ubicación y por animal */
 router.route('/cuidadores/servicios/:servicio')
 .get( getCuidadoresByServicio )
 
@@ -41,6 +44,7 @@ router.route('/reservas/:_id')
 .patch( verificarToken, patchReserva )
 .delete( verificarToken, deleteReserva )
 
+/* Reservas de un usuario y de un cuidador, para Mis reservas y el panel */
 router.route('/reservas/usuario/:_id')
 .get( getReservasByPerfil )
 
@@ -52,6 +56,7 @@ router.route('/perfiles/:_id')
 .get( getPerfilById )
 .patch( verificarToken, patchPerfil )
 
+/* Las mascotas se añaden, editan o borran dentro del perfil */
 router.route('/perfiles/:_id/mascotas')
 .post( verificarToken, postMascota )
 
@@ -64,6 +69,7 @@ y errorHandler responde a los next(error) de los controllers */
 router.use( notFound )
 router.use( errorHandler )
 
+/* Exportamos el router para index.js */
 module.exports = {
     router
 }

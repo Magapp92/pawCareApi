@@ -1,4 +1,5 @@
 
+/* jsonwebtoken firma el token de sesión; Login es el modelo con las credenciales */
 const jwt = require('jsonwebtoken')
 const { Login } = require ('../models')
 
@@ -7,6 +8,7 @@ con el email, la contraseña y el rol elegido en el formulario */
 const postLogin = async ( req, res, next ) => {
     try {
 
+        /* Recogemos lo que envía el formulario de login */
         const { email, password, rol } = req.body
 
         const data = await Login.findOne({ email, password, rol })
@@ -29,6 +31,7 @@ const postLogin = async ( req, res, next ) => {
 
         })
 
+        /* Devolvemos los datos de la sesión y el token, sin la contraseña */
         res.status(200).json({
             message: 'Login correcto',
             data: 
@@ -45,6 +48,7 @@ const postLogin = async ( req, res, next ) => {
     }
 }
 
+/* Exportamos el controller para el router */
 module.exports = {
     postLogin
 }

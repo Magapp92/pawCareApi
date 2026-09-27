@@ -6,12 +6,14 @@ const mongoose = require('mongoose')
 const loginSchema = new mongoose.Schema(
     {
       _id: { type: mongoose.Schema.Types.ObjectId , auto : true },
+      /* Email y contraseña son obligatorios; el rol solo puede ser usuario o cuidador */
       email: { type: mongoose.Schema.Types.String, required: true },
       password: { type: mongoose.Schema.Types.String, required: true },
       rol: { type: mongoose.Schema.Types.String, required: true, enum: ['usuario', 'cuidador'] }
     },
     { 
       collection: 'login',
+      /* Collation en español: las búsquedas no distinguen mayúsculas ni tildes */
        collation: {
             locale: 'es',
             strength: 2
@@ -24,13 +26,16 @@ const loginSchema = new mongoose.Schema(
 const cuidadorSchema = new mongoose.Schema(
     {
       _id: { type: mongoose.Schema.Types.ObjectId , auto : true },
+      /* Datos básicos que se ven en la tarjeta y en la ficha */
       nombre: { type: mongoose.Schema.Types.String, required: true },
       edad: { type: mongoose.Schema.Types.Number, min: 0 },
       avatarUrl: { type: mongoose.Schema.Types.String },
       ubicacion: { type: mongoose.Schema.Types.String, required: true },
       experienciaAnos: { type: mongoose.Schema.Types.Number },
       miembroDesde: { type: mongoose.Schema.Types.String },
+      /* Animales que acepta, para el filtro del buscador */
       animalesQueAtiende: [{ type: mongoose.Schema.Types.String }],
+      /* Qué servicios ofrece (true o false) y el precio de cada uno */
       servicios: {
         cuidadoDiario: { type: mongoose.Schema.Types.Boolean },
         largaEstancia: { type: mongoose.Schema.Types.Boolean },
@@ -67,11 +72,13 @@ const cuidadorSchema = new mongoose.Schema(
 const perfilSchema = new mongoose.Schema(
     {
       _id: { type: mongoose.Schema.Types.ObjectId , auto : true },
+      /* Datos de contacto del usuario */
       nombre: { type: mongoose.Schema.Types.String, required: true },
       telefono: { type: mongoose.Schema.Types.String },
       direccion: { type: mongoose.Schema.Types.String },
       avatarUrl: { type: mongoose.Schema.Types.String },
       miembroDesde: { type: mongoose.Schema.Types.String },
+      /* Las mascotas viven dentro del perfil: nombre y especie son obligatorios */
       mascotas: [
         {
         _id: { type: mongoose.Schema.Types.ObjectId , auto : true },
@@ -83,12 +90,14 @@ const perfilSchema = new mongoose.Schema(
         fotoUrl: { type: mongoose.Schema.Types.String }
         }
       ],
+      /* Resumen de sus reservas para pintarlas en Mi perfil sin otra consulta */
       reservas: [
         {
         bookingId: { type: mongoose.Schema.Types.ObjectId , ref: 'bookings' },
         fechaInicio: { type: mongoose.Schema.Types.String },
         fechaFin: { type: mongoose.Schema.Types.String },
-        tipoServicio: { type: mongoose.Schema.Types.String },
+        /* El servicio y el estado solo admiten los valores que entiende el front */
+     tipoServicio: { type: mongoose.Schema.Types.String },
         estado: { type: mongoose.Schema.Types.String },
         cuidadorNombre: { type: mongoose.Schema.Types.String },
         mascotaNombre: { type: mongoose.Schema.Types.String }
@@ -109,11 +118,13 @@ const perfilSchema = new mongoose.Schema(
 const reservaSchema = new mongoose.Schema (
     {
      _id: { type: mongoose.Schema.Types.ObjectId , auto : true },
+     /* Las fechas se guardan como texto tal cual llegan del formulario */
      fechaInicio: { type: mongoose.Schema.Types.String, required: true },
      fechaFin: { type: mongoose.Schema.Types.String, required: true },
      tipoServicio: { type: mongoose.Schema.Types.String, required: true, enum: ['cuidadoDiario', 'largaEstancia', 'paseador', 'peluqueria'] },
      estado: { type: mongoose.Schema.Types.String, required: true, enum: ['Pendiente', 'Confirmada'] },
      coste: { type: mongoose.Schema.Types.Number, required: true, min: 0 },
+     /* Opinión que deja el usuario; se muestra en el carrusel de comentarios del cuidador */
      comentario: { type: mongoose.Schema.Types.String },
      /* Conversación entre usuario y cuidador sobre la reserva. Cada uno borra solo de su lado:
      borradoPor, guarda quién la ha eliminado y el otro sigue viéndola */
@@ -152,6 +163,7 @@ const reservaSchema = new mongoose.Schema (
     }
 )
 
+/* Exportamos los schemas para crear los modelos en models.js */
 module.exports = {
     loginSchema,
     cuidadorSchema,
