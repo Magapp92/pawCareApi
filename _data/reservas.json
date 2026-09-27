@@ -29,8 +29,7 @@
       },
       "nombre": "Eduardo Fierro"
     },
-    "mensaje": "Les voy a llevar sus propias camas.",
-    "respuesta": "No hay problema ;)"
+    "mensajes": []
   },
   {
     "_id": {
@@ -61,7 +60,8 @@
         "$oid": "6a39ba3f5b40aa65904a40e7"
       },
       "nombre": "Eduardo Fierro"
-    }
+    },
+    "mensajes": []
   },
   {
     "_id": {
@@ -93,8 +93,7 @@
       },
       "nombre": "Eduardo Fierro"
     },
-    "mensaje": "",
-    "respuesta": ""
+    "mensajes": []
   },
   {
     "_id": {
@@ -125,7 +124,8 @@
         "$oid": "6a39ba3f5b40aa65904a40e7"
       },
       "nombre": "Eduardo Fierro"
-    }
+    },
+    "mensajes": []
   },
   {
     "_id": {
@@ -156,6 +156,7 @@
         "$oid": "6a39ba3f5b40aa65904a40e7"
       },
       "nombre": "Eduardo Fierro"
-    }
+    },
+    "mensajes": []
   }
 ]

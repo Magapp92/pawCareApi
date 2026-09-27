@@ -12,7 +12,6 @@ const loginSchema = new mongoose.Schema(
     },
     { 
       collection: 'login',
-      /* Collation en español con strength 2: las búsquedas no distinguen mayúsculas ni tildes */
        collation: {
             locale: 'es',
             strength: 2
@@ -106,21 +105,27 @@ const perfilSchema = new mongoose.Schema(
     }
 )
 
-/* Reserva con copia de los datos del cuidador, la mascota y el usuario
-para volcar la información en las tarjetas */
+/* Reserva con datos del cuidador, mascota y usuario para volcar la información en las tarjetas */
 const reservaSchema = new mongoose.Schema (
     {
      _id: { type: mongoose.Schema.Types.ObjectId , auto : true },
-     /* Las fechas se guardan como texto tal cual llegan del formulario: 'YYYY-MM-DD' o 'YYYY-MM-DD HH:mm' */
      fechaInicio: { type: mongoose.Schema.Types.String, required: true },
      fechaFin: { type: mongoose.Schema.Types.String, required: true },
      tipoServicio: { type: mongoose.Schema.Types.String, required: true, enum: ['cuidadoDiario', 'largaEstancia', 'paseador', 'peluqueria'] },
      estado: { type: mongoose.Schema.Types.String, required: true, enum: ['Pendiente', 'Confirmada'] },
      coste: { type: mongoose.Schema.Types.Number, required: true, min: 0 },
      comentario: { type: mongoose.Schema.Types.String },
-     mensaje: { type: mongoose.Schema.Types.String },
-     respuesta: { type: mongoose.Schema.Types.String },
-     /* Copias del cuidador, la mascota y el usuario para pintar la tarjeta sin más consultas */
+     /* Conversación entre usuario y cuidador sobre la reserva. Cada uno borra solo de su lado:
+     borradoPor, guarda quién la ha eliminado y el otro sigue viéndola */
+     mensajes: [
+        {
+          autor: { type: mongoose.Schema.Types.String, required: true, enum: ['usuario', 'cuidador'] },
+          texto: { type: mongoose.Schema.Types.String, required: true },
+          fecha: { type: mongoose.Schema.Types.String, required: true },
+          borradoPor: [{ type: mongoose.Schema.Types.String, enum: ['usuario', 'cuidador'] }]
+        }
+     ],
+     /* Copias del cuidador, la mascota y el usuario para volcar en la tarjeta sin más consultas */
      cuidador: { 
         cuidadorId: { type: mongoose.Schema.Types.ObjectId, ref:'cuidadores' }, 
         nombre: { type: mongoose.Schema.Types.String },
