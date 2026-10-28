@@ -5,11 +5,13 @@
   },
   "variable": [
     { "key": "baseUrl", "value": "http://localhost:3000" },
-    { "key": "perfilId", "value": "PEGA_AQUI_EL_ID_DEL_PERFIL" },
-    { "key": "cuidadorId", "value": "PEGA_AQUI_EL_ID_DEL_CUIDADOR" },
-    { "key": "mascotaId", "value": "PEGA_AQUI_EL_ID_DE_LA_MASCOTA" },
-    { "key": "reservaId", "value": "PEGA_AQUI_EL_ID_DE_LA_RESERVA" }
+    { "key": "perfilId", "value": "6a39ba3f5b40aa65904a40e7" },
+    { "key": "cuidadorId", "value": "6a39ba3f5b40aa65904a40e6" },
+    { "key": "mascotaId", "value": "6a53b46b8c35a8c4f8faea74" },
+    { "key": "reservaId", "value": "6a53b861b7c4840e8416d439" },
+    { "key": "token", "value": "" }
   ],
+  "auth": { "type": "bearer", "bearer": [{ "key": "token", "value": "{{token}}", "type": "string" }] },
   "item": [
     {
       "name": "Auth",
@@ -23,8 +25,10 @@
             "body": {
               "mode": "raw",
               "raw": "{\n  \"email\": \"edu@pawsitive.com\",\n  \"password\": \"edu1234\",\n  \"rol\": \"usuario\"\n}"
-            }
-          }
+            },
+            "auth": { "type": "noauth" }
+          },
+          "event": [{ "listen": "test", "script": { "type": "text/javascript", "exec": ["// Guardamos el token para las peticiones que crean, modifican o borran", "pm.collectionVariables.set(\"token\", pm.response.json().data.token)"] } }]
         },
         {
           "name": "Login cuidador (ana)",
@@ -35,7 +39,8 @@
             "body": {
               "mode": "raw",
               "raw": "{\n  \"email\": \"ana@pawsitive.com\",\n  \"password\": \"ana1234\",\n  \"rol\": \"cuidador\"\n}"
-            }
+            },
+            "auth": { "type": "noauth" }
           }
         }
       ]
@@ -120,7 +125,7 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"nombre\": \"Maria Lopez Garcia\",\n  \"edad\": 29,\n  \"avatarUrl\": \"https://i.pravatar.cc/150?img=5\",\n  \"ubicacion\": \"Madrid\",\n  \"experienciaAnos\": 5,\n  \"animalesQueAtiende\": [\"perro\", \"gato\", \"conejo\"],\n  \"servicios\": {\n    \"cuidadoDiario\": true,\n    \"largaEstancia\": true,\n    \"paseador\": true,\n    \"peluqueria\": false\n  },\n  \"valoracion\": 4.9,\n  \"preciosPorServicio\": {\n    \"cuidadoDiario\": 27,\n    \"largaEstancia\": 37,\n    \"paseador\": 15,\n    \"peluqueria\": 0\n  }\n}"
+              "raw": "{\n  \"nombre\": \"Ana Guerrero\",\n  \"edad\": 34,\n  \"avatarUrl\": \"/imagenes/AnaGuerrero.webp\",\n  \"ubicacion\": \"Madrid\",\n  \"experienciaAnos\": 5,\n  \"animalesQueAtiende\": [\"perro\", \"gato\", \"conejo\"],\n  \"servicios\": {\n    \"cuidadoDiario\": true,\n    \"largaEstancia\": true,\n    \"paseador\": true,\n    \"peluqueria\": false\n  },\n  \"preciosPorServicio\": {\n    \"cuidadoDiario\": 18,\n    \"largaEstancia\": 30,\n    \"paseador\": 12,\n    \"peluqueria\": 0\n  }\n}"
             }
           }
         },
@@ -158,7 +163,7 @@
             "header": [{ "key": "Content-Type", "value": "application/json" }],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"fechaInicio\": \"2026-09-01\",\n  \"fechaFin\": \"2026-09-05\",\n  \"tipoServicio\": \"largaEstancia\",\n  \"estado\": \"Pendiente\",\n  \"coste\": 135,\n  \"cuidador\": {\n    \"cuidadorId\": \"{{cuidadorId}}\",\n    \"nombre\": \"Maria Lopez\",\n    \"avatarUrl\": \"https://i.pravatar.cc/150?img=5\"\n  },\n  \"mascota\": {\n    \"mascotaId\": \"{{mascotaId}}\",\n    \"nombre\": \"Luna\",\n    \"especie\": \"perro\",\n    \"fotoUrl\": \"https://placedog.net/400/300?id=1\"\n  },\n  \"usuario\": {\n    \"perfilId\": \"{{perfilId}}\",\n    \"nombre\": \"Ana Garcia\"\n  }\n}"
+              "raw": "{\n  \"fechaInicio\": \"2026-12-01\",\n  \"fechaFin\": \"2026-12-05\",\n  \"tipoServicio\": \"largaEstancia\",\n  \"estado\": \"Pendiente\",\n  \"coste\": 150,\n  \"cuidador\": {\n    \"cuidadorId\": \"{{cuidadorId}}\",\n    \"nombre\": \"Ana Guerrero\",\n    \"avatarUrl\": \"/imagenes/AnaGuerrero.webp\"\n  },\n  \"mascota\": {\n    \"mascotaId\": \"6a39bc125b40aa65904a4100\",\n    \"nombre\": \"Max\",\n    \"especie\": \"perro\",\n    \"fotoUrl\": \"/mascota-default.svg\"\n  },\n  \"usuario\": {\n    \"perfilId\": \"{{perfilId}}\",\n    \"nombre\": \"Eduardo Fierro\"\n  }\n}"
             }
           }
         },
